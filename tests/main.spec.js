@@ -1,63 +1,34 @@
-import {expect} from 'chai';
-import {sum, sub, div, mult} from '../src/main';
+/*
+desafio fizzbuzz
+Escreva uma lib que receba um número e:
 
-describe('Calc', () => {
+Se o número for divisivel por 3, no lugar do número escreva "Fizz"
+Se o número for divisivel por 5, no lugar do número escreva "Buzz"
+Se o número for divisivel por 3 e 5, no lugar do número escreva "FizzBuzz"
+Se não for multiplo de nada, retorna o número
+*/
 
-  //smoke tests
-  describe('Smoke Tests', () => {
+import { expect } from 'chai';
+import FizzBuzz from '../src/main';
+
+describe('FizzBuzz', () => {
   
-    it('should exist the method ´sum´', () => {
-      expect(sum).to.exist;
-      expect(sum).to.be.a('function');
-    });
-
-    it('should exist the method ´sub´', () => {
-        expect(sub).to.exist;
-        expect(sub).to.be.a('function');
-    });
-
-    it('should exist the method ´mult´', () => {
-        expect(mult).to.exist;
-        expect(mult).to.be.a('function');
-    });
-
-    it('should exist the method ´div´', () => {
-        expect(div).to.exist;
-        expect(div).to.be.a('function');
-    });
-
+  it('should return ´Fizz´ when multiple of 3', () => {
+    expect(FizzBuzz(3)).to.be.equal('Fizz');
+    expect(FizzBuzz(6)).to.be.equal('Fizz');
   });
 
-  describe('Sum', () => {
-    it('should return 4 when ´sum(2,2)´', () => {
-        expect(sum(2,2)).to.be.equal(4);
-    });
+  it('should return ´Buzz´ when multiple of 5', () => {
+    expect(FizzBuzz(5)).to.be.equal('Buzz');
+    expect(FizzBuzz(100)).to.be.equal('Buzz');
   });
 
-  describe('Sub', () => {
-    it('should return 0 when ´sub(2,2)´', () => {
-        expect(sub(2, 2)).to.be.equal(0);
-    });
-
-    it('should return -10 when ´sub(10,20)´', () => {
-        expect(sub(10, 20)).to.be.equal(-10);
-    });
+  it('should return ´FizzBuzz´ when multiple of 3 and 5', () => {
+    expect(FizzBuzz(15)).to.be.equal('FizzBuzz');
   });
 
-  describe('Div', () => {
-    it('should return 2 when ´div(10,5)´', () => {
-        expect(div(10, 5)).to.be.equal(2);
-    });
-
-    it('should return ´Não é possível divisão por zero!´ when divided by 0', () => {
-        expect(div(4, 0)).to.be.equal('Não é possível divisão por zero!');
-    });
-  });
-
-  describe('Mult', () => {
-    it('should return 100 when ´mult(2,50)´', () => {
-        expect(mult(2, 50)).to.be.equal(100);
-    });
+  it('should return the number when non-multiple', () => {
+    expect(FizzBuzz(7)).to.be.equal(7);
   });
 
 });
