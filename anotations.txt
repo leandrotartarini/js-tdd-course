@@ -1,0 +1,54 @@
+//describe serve para criar um bloco para testar métodos de uma função
+//context serve para separar os casos de um describe
+//it em geral vai rodar o comando, de fato o nosso teste, espera que aconteça
+//npm test -- --reporters (npm test -- --reporter=nyan)
+//npm test -- --bail (para o teste assim que o primeiro quebra)
+//only é para rodar apenas uma parte de um bloco
+//skip é para pular uma parte de um bloco e não rodar
+//hooks são rodados a partir de algum momento, alguma ação
+
+HOOKS
+//roda uma vez, antes do bloco || before
+//roda uma vez, depois do bloco || after
+//roda todas as vezes, antes de CADA bloco || beforeEach
+//roda todas as vezes, depois de CADA bloco || afterEach
+
+//dentro do bloco vc define a variavel
+//dentro do hook vc define os valores da variavel
+
+//CHAI é a biblioteca de asserts (responsavel pelo IT)
+
+
+var expect = require('chai').expect;
+
+describe('Main', function() {
+  var arr;
+
+  beforeEach(function() {
+    arr = [1,2,3];
+  });
+
+  //testar tipos ou se existe (smoke test)
+  it('should be an array', function() {
+      expect(arr).to.be.a('array');
+  });
+
+  it('should have a size of 4 when push another value to the array', function() {
+      arr.push(4);
+      expect(arr).to.have.lengthOf(4);   
+  });
+
+  it('should remove the value 3 when use pop in the array', function() {
+      arr.pop();
+      expect(arr).to.not.include(3);
+  });
+
+  it('should return true when pop 3 from the array', function() {
+      expect(arr.pop() === 3).to.be.true;
+  });
+
+  it('should have a size of 2 when pop a value from the array', function() {
+      arr.pop();
+      expect(arr).to.have.lengthOf(2);
+  });
+});  
